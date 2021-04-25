@@ -1,7 +1,7 @@
 //Show the song name artist and the picture
 import React, {useRef, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAngleLeft, faAngleRight, faPlay} from "@fortawesome/free-solid-svg-icons";
+import {faAngleLeft, faAngleRight, faPause, faPlay} from "@fortawesome/free-solid-svg-icons";
 
 const Player = ({currentSong, isPlaying, setIsPlaying}) => {
     //Ref. to get an element(audio)
@@ -47,7 +47,8 @@ const Player = ({currentSong, isPlaying, setIsPlaying}) => {
             </div>
             <div className="play-control">
                 <FontAwesomeIcon className="skip-back" size="2x" icon={faAngleLeft}/>
-                <FontAwesomeIcon onClick={playSongHandler} className="play" size="2x" icon={faPlay}/>
+                <FontAwesomeIcon onClick={playSongHandler} className="play" size="2x"
+                                 icon={isPlaying ? faPause : faPlay}/>
                 <FontAwesomeIcon className="skip-forward" size="2x" icon={faAngleRight}/>
             </div>
             <audio onLoadedMetadata={timeUpdatehandler} onTimeUpdate={timeUpdatehandler}
