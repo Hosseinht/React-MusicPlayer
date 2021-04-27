@@ -16,10 +16,11 @@ const LibrarySong = ({song, songs, setCurrentSong, audioRef, isPlaying, id, setS
         //Check if the song is playing
         if (isPlaying) {
             const playPromis = audioRef.current.play();
+            // undefined: if the audio is undefined means it hasn't loaded up'
             if (playPromis !== undefined) {
                 playPromis.then((audio) => {
                     audioRef.current.play();
-                    console.log()
+
                 })
             }
         }

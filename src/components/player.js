@@ -1,5 +1,6 @@
-//Show the song name artist and the picture
-import React, {useState} from "react";
+//This components control the music
+
+import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleLeft, faAngleRight, faPause, faPlay} from "@fortawesome/free-solid-svg-icons";
 
@@ -9,6 +10,7 @@ const Player = ({currentSong, isPlaying, setIsPlaying, audioRef, songInfo, setSo
     //Event Handlers
     const playSongHandler = () => {
         // console.log(audioRef.current)
+        //Play and pause the song
         if (isPlaying) {
             audioRef.current.pause();
             setIsPlaying(!isPlaying)
@@ -32,12 +34,14 @@ const Player = ({currentSong, isPlaying, setIsPlaying, audioRef, songInfo, setSo
 
     return (
         <div className="player">
+            {/*The input. It shows time and slider*/}
             <div className="time-control">
                 <p>{getTime(songInfo.currentTime)}</p>
-                <input min={0} max={songInfo.duration} value={songInfo.currentTime} onChange={dragHandler}
+                <input min={0} max={songInfo.duration || 0} value={songInfo.currentTime} onChange={dragHandler}
                        type="range"/>
                 <p>{getTime(songInfo.duration)}</p>
             </div>
+            {/*Controls. Play pause next and previous*/}
             <div className="play-control">
                 <FontAwesomeIcon className="skip-back" size="2x" icon={faAngleLeft}/>
                 <FontAwesomeIcon onClick={playSongHandler} className="play" size="2x"
@@ -51,3 +55,5 @@ const Player = ({currentSong, isPlaying, setIsPlaying, audioRef, songInfo, setSo
 }
 
 export default Player;
+
+// || 0 fixes the warning error: Received NaN for the max attribute. it adds a default value
