@@ -1,11 +1,32 @@
 //This components control the music
 
-import React from "react";
+import React, {useEffect} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleLeft, faAngleRight, faPause, faPlay} from "@fortawesome/free-solid-svg-icons";
 
-const Player = ({currentSong, isPlaying, setIsPlaying, audioRef, songInfo, setSongInfo, songs, setCurrentSong}) => {
-    //Ref. to get an element(audio)
+const Player = ({
+                    currentSong,
+                    isPlaying,
+                    setIsPlaying,
+                    audioRef,
+                    songInfo,
+                    setSongInfo,
+                    songs,
+                    setCurrentSong,
+                    setSongs
+                }) => {
+    //useEffect
+    useEffect(() => {
+        const newSongs = songs.map((song) => {
+            if (song.id === currentSong.id) {
+                return {...song, active: true,}
+            } else {
+                return {...song, active: false}
+            }
+        });
+        setSongs(newSongs)
+    }, [currentSong]);
+
 
     //Event Handlers
     const playSongHandler = () => {
