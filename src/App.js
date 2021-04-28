@@ -37,8 +37,10 @@ function App() {
             <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus}/>
             < Song currentSong={currentSong}/>
             < Player songInfo={songInfo} setSongInfo={setSongInfo} audioRef={audioRef} isPlaying={isPlaying}
-                     setIsPlaying={setIsPlaying} currentSong={currentSong}/>
-            < Library libraryStatus={libraryStatus} isPlaying={isPlaying} audioRef={audioRef} songs={songs} setSongs={setSongs}
+                     setIsPlaying={setIsPlaying} currentSong={currentSong} songs={songs}
+                     setCurrentSong={setCurrentSong}/>
+            < Library libraryStatus={libraryStatus} isPlaying={isPlaying} audioRef={audioRef} songs={songs}
+                      setSongs={setSongs}
                       setCurrentSong={setCurrentSong}/>
             <audio onLoadedMetadata={timeUpdatehandler} onTimeUpdate={timeUpdatehandler}
                    ref={audioRef}
