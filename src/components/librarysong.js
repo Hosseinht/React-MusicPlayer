@@ -1,10 +1,9 @@
 //Show the song name artist and the picture
 import React from "react";
-import {playAudio} from "../util";
 
 const LibrarySong = ({song, songs, setCurrentSong, audioRef, isPlaying, id, setSongs}) => {
-    const songSelecthandler = () => {
-        setCurrentSong(song);
+    const songSelecthandler = async () => {
+        await setCurrentSong(song);
         //Ad Active State
         const newSongs = songs.map((song) => {
             if (song.id === id) {
@@ -15,7 +14,7 @@ const LibrarySong = ({song, songs, setCurrentSong, audioRef, isPlaying, id, setS
         });
         setSongs(newSongs)
         //Check if the song is playing
-       playAudio(isPlaying, audioRef)
+        if (isPlaying) audioRef.current.play()
     };
     return (
         <div onClick={songSelecthandler} className={`library-song ${song.active ? 'selected' : ""}`}>
