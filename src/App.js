@@ -7,7 +7,7 @@ import Song from "./components/song";
 import Library from "./components/library";
 import Nav from "./components/nav";
 //Import Util
-import data from './util';
+import data from './data';
 
 //Data or whatever we like to name it
 
